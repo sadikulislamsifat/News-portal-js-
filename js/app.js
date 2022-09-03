@@ -23,7 +23,8 @@ const loadCategory = async() => {
     
    })
  }
-
+ 
+ // load news data
 const loadData = async() => {
     const url  = `https://openapi.programming-hero.com/api/news/category/01`;
     const res = await fetch(url);
@@ -31,10 +32,11 @@ const loadData = async() => {
     displayData(data.data)
 };
 
-
+ // display news data
  const displayData = (users) => {
-
-   users = users.slice(0, 4)
+   //show 4 user
+   users = users.slice(0, 4);
+   // get user container
     const userContainer = document.getElementById('user-container');
     users.forEach(user => {
         console.log(user)
@@ -85,6 +87,7 @@ const loadData = async() => {
              
              </div>
         `;
+        //append user info
         userContainer.appendChild(userDiv);
 
     });

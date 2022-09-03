@@ -1,0 +1,22 @@
+
+.bg-colorc{
+    background:#f8f7f7;
+}
+.author-img{
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+.category-item{
+    text-decoration: none;
+    color: black;
+    font-weight: 600;
+}
+.category-item:hover{
+    text-decoration: underline;
+    color: #000;
+}
+.category-item:focus{
+    color: blue;
+ 
+}

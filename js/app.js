@@ -12,11 +12,12 @@ const loadCategory = async() => {
  const displayCategory = (categories) => {
     const newsCategory = document.getElementById('catagory-container');
    categories.forEach(category => {
-    // console.log(category)
+    console.log(category);
+    // loadData(category.category_id);
     const catagoryDiv = document.createElement('div');
     catagoryDiv.classList.add('hi');
     catagoryDiv.innerHTML = `
-   <a class="category-item" class="text-secondary text-decoration-none" href="#">${category.category_name}</a>
+   <a class="category-item" onclick="loadData('${category.category_id}')" class="text-secondary text-decoration-none" href="#">${category.category_name}</a>
     `;
     newsCategory.appendChild(catagoryDiv)
   
@@ -26,7 +27,7 @@ const loadCategory = async() => {
  
  // load news data
 const loadData = async(catagory) => {
-    const url  = `https://openapi.programming-hero.com/api/news/category/0${catagory}`;
+    const url  = `https://openapi.programming-hero.com/api/news/category/${catagory}`;
     const res = await fetch(url);
     const data = await res.json();
     displayData(data.data)
@@ -35,7 +36,7 @@ const loadData = async(catagory) => {
  // display news data
  const displayData = (users) => {
    //show 4 user
-   users = users.slice(0, 4);
+  //  users = users.slice(0, 4);
    // get user container
     const userContainer = document.getElementById('user-container');
     users.forEach(user => {
@@ -89,6 +90,8 @@ const loadData = async(catagory) => {
         `;
         //append user info
         userContainer.appendChild(userDiv);
+       
+        
 
     });
  }
@@ -97,8 +100,17 @@ const loadData = async(catagory) => {
     const url = `https://openapi.programming-hero.com/api/news/${id}`;
     const res = await fetch(url);
     const data = await res.json();
+    displayModal(data)
     
+ }
+
+ const displayModal = (user) => {
+  console.log(user)
+     const modalBody = document.getElementById('category.category_id');
+       modalBody.innerHTML = `
+        <img src="${user.image_url}" class="w-100 h-100" alt="...">
+        `
  }
 loadNewsDetails()
  loadCategory();
-loadData(1)
+loadData()
